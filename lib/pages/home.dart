@@ -1,62 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:warehouse/models/destination.dart';
-import 'package:warehouse/widgets/destination_view.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  _HomeState createState() => _HomeState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeState extends State<Home> with TickerProviderStateMixin {
-  static const List<Destination> allDestinations = <Destination>[
-    Destination(0, 'Categories', Icons.category, Colors.teal),
-    Destination(1, 'list', Icons.category, Colors.teal),
-    // Adicione outros destinos conforme necessário
+class _HomeViewState extends State<HomeView> {
+  int currentIndex = 0;
+  final screens = [
+    Center(
+      child: Text("Home", style: TextStyle(fontSize: 60)),
+    ),
+    Center(
+      child: Text("Categorias", style: TextStyle(fontSize: 60)),
+    ),
+    Center(
+      child: Text("Atividades", style: TextStyle(fontSize: 60)),
+    ),
+    Center(
+      child: Text("Configurações", style: TextStyle(fontSize: 60)),
+    ),
   ];
-
-  late final List<GlobalKey<NavigatorState>> navigatorKeys;
-  int selectedIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    navigatorKeys = List<GlobalKey<NavigatorState>>.generate(
-      allDestinations.length,
-          (int index) => GlobalKey(),
-    ).toList();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        top: false,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            for (final Destination destination in allDestinations)
-              DestinationView(
-                destination: destination,
-                navigatorKey: navigatorKeys[destination.index],
-              ),
-          ],
-        ),
+      body: IndexedStack(
+        index: currentIndex,
+        children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        onTap: (int index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
-        items: allDestinations.map((Destination destination) {
-          return BottomNavigationBarItem(
-            icon: Icon(destination.icon),
-            label: destination.title,
-          );
-        }).toList(),
+        type: BottomNavigationBarType.fixed,
+        onTap: (index) => setState(() => currentIndex = index),
+        currentIndex: currentIndex,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+            backgroundColor: Colors.amber,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search_outlined),
+            label: 'Procurar',
+            backgroundColor: Colors.orange,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sync_alt_outlined),
+            label: 'Atividades',
+            backgroundColor: Colors.red,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Configurações',
+            backgroundColor: Colors.blue,
+          ),
+        ],
       ),
     );
   }
