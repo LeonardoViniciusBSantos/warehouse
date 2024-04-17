@@ -10,7 +10,7 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Wrap(
           spacing: 8,
           runSpacing: 8,

@@ -34,21 +34,18 @@ class _HomeViewState extends State<HomeView> {
               height: 80,
               decoration: BoxDecoration(border: Border(bottom: BorderSide())),
               child: Padding(
-                padding: const EdgeInsets.all(25.0),
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       height: 40,
-                      width: 280,
+                      width: 260,
                       decoration: BoxDecoration(
                           border: Border.all(
                               width: 2,
                               color: Color.fromARGB(255, 55, 87, 253)),
                           borderRadius: BorderRadius.circular(10)),
-                    ),
-                    const SizedBox(
-                      width: 10,
                     ),
                     const Icon(
                       Icons.search,
@@ -76,22 +73,18 @@ class _HomeViewState extends State<HomeView> {
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
               label: 'Home',
-              backgroundColor: Colors.amber,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.search_outlined),
-              label: 'Procurar',
-              backgroundColor: Colors.orange,
+              label: 'Busca',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.sync_alt_outlined),
               label: 'Atividades',
-              backgroundColor: Colors.red,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
-              label: 'Configurações',
-              backgroundColor: Colors.blue,
+              label: 'Ajustes',
             ),
           ],
         ),
