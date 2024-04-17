@@ -3,6 +3,6 @@ import 'package:warehouse/pages/home.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: Home(),
+    home: HomeView(),
   ));
 }
