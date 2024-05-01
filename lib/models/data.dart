@@ -1,3 +1,4 @@
+import 'package:warehouse/models/catActivity.model.dart';
 import 'package:warehouse/models/categoria.model.dart';
 import 'package:warehouse/models/item.model.dart';
 
@@ -60,4 +61,11 @@ List<Categoria> categorias = [
       ),
     ],
   ),
+];
+
+var listaActivities = [
+  CatActivity(nome: "Vacina"),
+  CatActivity(nome: "Parir"),
+  CatActivity(nome: "Qualque coisa"),
+  CatActivity(nome: "Isso mesmo"),
 ];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warehouse/models/data.dart';
-import 'package:warehouse/pages/item.view.dart';
+import 'package:warehouse/pages/list_item.view.dart';
 import 'package:warehouse/widgets/category.widget.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -22,7 +22,8 @@ class CategoryScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ItemView(categoria: categoria)));
+                        builder: (context) =>
+                            ListItemView(categoria: categoria)));
               },
             ),
           ),
