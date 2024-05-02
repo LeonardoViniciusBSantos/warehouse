@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warehouse/models/categoria.model.dart';
+import 'package:warehouse/pages/item.view.dart';
 import 'package:warehouse/widgets/item.widget.dart';
 
 class ListItemWidget extends StatelessWidget {
@@ -16,7 +17,12 @@ class ListItemWidget extends StatelessWidget {
             return ItemWidget(
               item: categoria.itens[index],
               onTap: (p0) {
-                print('clicou');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ItemView(
+                              item: p0,
+                            )));
               },
             );
           }),
