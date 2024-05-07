@@ -18,20 +18,12 @@ class ItemWidget extends StatelessWidget {
             border: BorderDirectional(bottom: BorderSide(color: Colors.black))),
         height: 60,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.agriculture),
-            Column(
-              children: [
-                Text(
-                  "${item.id}",
-                  style: TextStyle(fontSize: 22),
-                ),
-                Text(
-                  item.nome,
-                  style: TextStyle(fontSize: 14),
-                ),
-              ],
+            Icon(Icons.book),
+            Text(
+              item.name,
+              style: TextStyle(fontSize: 16),
             ),
             Icon(Icons.arrow_forward_ios),
           ],

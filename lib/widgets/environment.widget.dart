@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:warehouse/models/environment.model.dart';
 
-class CategoryWidget extends StatelessWidget {
-  final String category;
+class EnvironmentWidget extends StatelessWidget {
+  final Environment environment;
   final int itemCount;
   final VoidCallback onTap;
 
-  const CategoryWidget({
+  const EnvironmentWidget({
     Key? key,
-    required this.category,
+    required this.environment,
     required this.itemCount,
     required this.onTap,
   }) : super(key: key);
@@ -54,10 +55,9 @@ class CategoryWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  category,
+                  environment.name,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                Text("$itemCount itens"),
               ],
             ),
           )
