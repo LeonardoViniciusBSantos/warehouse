@@ -1,29 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:warehouse/pages/activities.view.dart';
-import 'package:warehouse/pages/category.view.dart';
-import 'package:warehouse/models/data.dart';
+import 'package:warehouse/pages/create_item.view.dart';
+import 'package:warehouse/pages/environment.view.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({super.key});
-
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  int currentIndex = 0;
-  var item = listaActivities[0];
-  final screens = [
-    Center(
-      child: Text("Início", style: TextStyle(fontSize: 60)),
-    ),
-    const CategoryScreen(),
-    ActivityScreen(),
-    //const ListActivityWidget(),
-    Center(
-      child: Text("Configurações", style: TextStyle(fontSize: 40)),
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -66,38 +46,25 @@ class _HomeViewState extends State<HomeView> {
             ),
             Expanded(
               flex: 8,
-              child: IndexedStack(
-                index: currentIndex,
-                children: screens,
-              ),
+              child: EnvironmentScreen(),
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          onTap: (index) => setState(() => currentIndex = index),
-          currentIndex: currentIndex,
-          backgroundColor: Colors.white,
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.black,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search_outlined),
-              label: 'Busca',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.sync_alt_outlined),
-              label: 'Atividades',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Ajustes',
-            ),
-          ],
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Color.fromARGB(255, 55, 87, 253),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CreateItemsScreen(),
+              ),
+            );
+          },
+          tooltip: 'Adicionar',
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
         ),
       ),
     );
